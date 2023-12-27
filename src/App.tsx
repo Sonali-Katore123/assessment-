@@ -1,11 +1,10 @@
-import React from "react";
 import "./App.css";
 import TopNavBar from "./components/TopNavBar";
 
 function App() {
   return (
     <div>
-      <TopNavBar/>
+      <TopNavBar />
     </div>
   );
 }
