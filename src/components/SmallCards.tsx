@@ -7,7 +7,7 @@ import Media from "./Card";
 import BottomNavigations from "./BottomeNavigation";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { component } from ".";
+import Button from "./Button";
 
 const SmallCards = () => {
   const navigate = useNavigate();
@@ -25,11 +25,9 @@ const SmallCards = () => {
 
   const handleNext = () => {
     if (isChecked1) {
-      
       navigate("/FillDataText");
       console.log("Navigate to page 1");
     } else if (isChecked2) {
-    
       navigate("/FillDataMedia");
       console.log("Navigate to page 2");
     } else {
@@ -87,11 +85,7 @@ const SmallCards = () => {
         </Stack>
       </div>
       <div style={{ marginBottom: 19 }}>
-        <component.Button
-          onClick={handleNext}
-          lable="Next"
-          background="#008CBA"
-        />
+        <Button onClick={handleNext} lable="Next" background="#008CBA" />
       </div>
     </div>
   );

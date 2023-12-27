@@ -5,17 +5,17 @@ import Card from "./Card";
 import InputField from "./InputField";
 import MainCard from "./MainCard";
 import Modals from "./Modal";
-import SmallCards from "./SmallCards";
+import TableData from "./TableData";
 import TopNavBar from "./TopNavBar";
 
 export const component = {
   Card,
   InputField,
   Button,
-  SmallCards,
   Modals,
   BottomNavigations,
   Media,
   MainCard,
-  TopNavBar
+  TopNavBar,
+  TableData,
 };

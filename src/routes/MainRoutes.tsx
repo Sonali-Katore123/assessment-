@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Route, Routes } from "react-router-dom";
 import UserDash from "../dashbord/UserDash";
 import CreateAds from "../screens/CreateAds";
@@ -9,9 +9,9 @@ import FillDataText from "../screens/FillDataText";
 const MainRoutes = () => {
   return (
     <Routes>
-      <Route path="/FillDataMedia" element={<FillDataMedia heading1={""} heading2={""} description={""}/>} />
+      <Route path="/FillDataMedia" element={<FillDataMedia/>} />
       <Route path="/CreateAds" element ={<CreateAds/>}/>
-      <Route path="/FillDataText" element={<FillDataText heading1={""} heading2={""} description={""} />} />
+      <Route path="/FillDataText" element={<FillDataText/>} />
       <Route path="/UserDash" element={<UserDash/>} />
     </Routes>
   );

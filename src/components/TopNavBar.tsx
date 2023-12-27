@@ -23,7 +23,7 @@ const TopNavBar = () => {
           component="div"
           sx={{ flexGrow: 1, backgroundColor: "#ffffff", color: "#242424" }}
         >
-          APP LOGO 
+          APP LOGO
         </Typography>
         <Button
           color="inherit"

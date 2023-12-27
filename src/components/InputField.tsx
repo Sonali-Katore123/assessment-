@@ -7,8 +7,8 @@ interface InputTextComponentProps {
   placeholder?: string;
   inputTextComponentStyle?: React.CSSProperties;
   editable?: boolean;
-  multiline?:boolean
-  maxRows: number
+  multiline?: boolean;
+  maxRows: number;
 }
 
 const InputTextComponent: React.FC<InputTextComponentProps> = ({
@@ -18,8 +18,7 @@ const InputTextComponent: React.FC<InputTextComponentProps> = ({
   inputTextComponentStyle,
   editable = true,
   multiline = false,
-  maxRows 
-
+  maxRows,
 }) => {
   return (
     <TextField
@@ -31,7 +30,7 @@ const InputTextComponent: React.FC<InputTextComponentProps> = ({
       variant="outlined"
       margin="normal"
       required
-      multiline ={multiline}
+      multiline={multiline}
       maxRows={maxRows}
     />
   );

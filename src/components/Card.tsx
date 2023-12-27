@@ -13,7 +13,7 @@ import Divider from "@mui/material/Divider";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import BottomNavigations from "./BottomeNavigation";
+
 
 interface MediaProps {
   loading?: boolean;

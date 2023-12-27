@@ -6,24 +6,25 @@ import Container from "@mui/material/Container";
 import { component } from "../components";
 import MenuItem from "@mui/material/MenuItem";
 import Modal from "@mui/material/Modal";
-
+import { FormTextProps } from "../model";
+import { useNavigate } from "react-router-dom";
 interface FormProps {
-  heading1: string;
-  heading2: string;
-  description: string;
+  FormText?: any | null;
 }
 const FillDataText: React.FC<FormProps> = ({
-  heading1,
-  heading2,
-  description,
+  FormText = {
+    heading1: "",
+    heading2: "",
+    description: "",
+    bussinessname: "",
+    bussinesslable: "",
+    weburl: "",
+  },
 }) => {
   // const ResponsiveForm: React.FC<FormProps> = ({ heading1, heading2, description }) => {
-  const [formData, setFormData] = useState<FormProps>({
-    heading1,
-    heading2,
-    description,
-  });
-
+  const [formData, setFormData] = useState<FormTextProps>(FormText);
+  const navigate = useNavigate();
+  const [openModal, setOpenModal] = React.useState(false);
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -31,39 +32,56 @@ const FillDataText: React.FC<FormProps> = ({
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleClick = () => {
-    window.alert("Button clicked!");
-    // You can replace window.alert with your custom Alert function if needed
+  const handleClickBack = () => {
+    navigate("/UserDash");
   };
 
-  const currencies = [
-    {
-      value: "USD",
-      label: "$",
-    },
-    {
-      value: "EUR",
-      label: "€",
-    },
-    {
-      value: "BTC",
-      label: "฿",
-    },
-    {
-      value: "JPY",
-      label: "¥",
-    },
-  ];
-
-  const [openModal, setOpenModal] = React.useState(false);
   const handleOpen = () => {
     setOpenModal(true);
     setTimeout(() => {
       handleClose(); // Close the modal
+      navigate("/CreateAds");
       // history.push('/another-page');  // Replace '/another-page' with the actual path you want to navigate to
     }, 600);
   };
   const handleClose = () => setOpenModal(false);
+
+  const handleSubmit = () => {
+    if (
+      !formData.heading1 ||
+      !formData.heading2 ||
+      !formData.description ||
+      !formData.bussinesslable ||
+      !formData.bussinessname ||
+      !formData.weburl
+    ) {
+      console.log("All fields are required");
+    } else {
+      handleOpen();
+      console.log("Form Data", JSON.stringify(formData));
+    }
+    //var data = {};
+  };
+
+  const currencies = [
+    {
+      value: "1",
+      label: "Clothes",
+    },
+    {
+      value: "2",
+      label: "Food",
+    },
+    {
+      value: "3",
+      label: "Catering",
+    },
+    {
+      value: "4",
+      label: "Stone Crusher",
+    },
+  ];
+
   return (
     <Container maxWidth="md">
       <Box
@@ -134,8 +152,8 @@ const FillDataText: React.FC<FormProps> = ({
               fullWidth
               label="Bussiness Name"
               placeholder="Add your bussiness name"
-              name="heading1"
-              value={formData.heading1}
+              name="bussinessname"
+              value={formData.bussinessname}
               onChange={handleChange}
               sx={{ marginRight: 2 }}
             />
@@ -145,8 +163,8 @@ const FillDataText: React.FC<FormProps> = ({
               select
               label="Bussiness Lable"
               placeholder="Select label that best suit for add"
-              name="heading2"
-              value={formData.heading2}
+              name="bussinesslable"
+              value={formData.bussinesslable}
               onChange={handleChange}
               // sx={{ marginRight: 2 }}
             >
@@ -162,8 +180,8 @@ const FillDataText: React.FC<FormProps> = ({
             fullWidth
             label="Website URL"
             placeholder="Add the URL of the landing page you want to redirect user to"
-            name="heading2"
-            value={formData.heading2}
+            name="weburl"
+            value={formData.weburl}
             onChange={handleChange}
           />
 
@@ -175,12 +193,12 @@ const FillDataText: React.FC<FormProps> = ({
             }}
           >
             <component.Button
-              onClick={handleClick}
+              onClick={handleClickBack}
               background="#555555"
               lable="Back"
             />
             <component.Button
-              onClick={handleOpen}
+              onClick={handleSubmit}
               background=" #008CBA"
               lable="Submit"
             />
